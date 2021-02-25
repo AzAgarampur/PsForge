@@ -29,8 +29,8 @@ Detecting hollowed processes is relatively easy. All you need to do is compare t
 
 ## Side notes
 - Info about the initial thread's context
--- `RCX` contains the address of the entry point to be executed after initialization is complete
--- `RDX` contains the address of the PEB. I use this instead of querying for the PEB via `NtQueryInformationProcess`
+  - `RCX` contains the address of the entry point to be executed after initialization is complete
+  - `RDX` contains the address of the PEB. I use this instead of querying for the PEB via `NtQueryInformationProcess`
 - Info about using internal APIs
 -- To map/unmap the file (section object) into remote processes, `MapViewOfFile/UnmapViewOfFile` can't be used as they perform the operation on the calling process
 -- I'm using the internal `NtMapViewOfSection/NtUnmapViewOfSection` to overcome this limitation, as they let you specify a process `HANDLE` to perform the operation on
